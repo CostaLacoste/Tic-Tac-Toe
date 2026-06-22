@@ -2,7 +2,6 @@
 
 A classic two-player Tic Tac Toe game built with React.
 
-![Game Preview](public/preview.png)
 
 ## 🎮 How to Play
 
