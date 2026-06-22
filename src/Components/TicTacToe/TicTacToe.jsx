@@ -9,7 +9,7 @@ const TicTacToe = () => {
 
     let [count, setCount] = useState(0)
     let [lock, setLock] = useState(false)
-    let titileRef = useRef(null)
+    let titleRef = useRef(null)
     let box1 = useRef(null)
     let box2 = useRef(null)
     let box3 = useRef(null)
@@ -27,12 +27,12 @@ const TicTacToe = () => {
             return 0;
         }
         if (count % 2 === 0){
-            e.target.innerHTML = `<img scr='${cross_icon}'>`
+            e.target.innerHTML = `<img src='${cross_icon}'>`
             data[num] = "x" 
             setCount(++count)
         }
         else {
-            e.target.innerHTML = `<img scr='${circle_icon}'>`
+            e.target.innerHTML = `<img src='${circle_icon}'>`
             data[num] = "o" 
             setCount(++count)
         }
@@ -42,7 +42,7 @@ const TicTacToe = () => {
     const reset = () => {
         setLock(false)
         data = ["","","","","","","","",""]
-        titileRef.current.innerHTML = `Tic Tac Toe`
+        titleRef.current.innerHTML = `Tic Tac Toe`
         box_array.map((e) => {
             e.current.innerHTML = ""
         })
@@ -73,24 +73,24 @@ const TicTacToe = () => {
         else if (data[0]===data[1] && data[1]===data[2] && data[2]!==""){
             won(data[2])
         }
-        if (data[2]===data[4] && data[4]===data[6] && data[6]!==""){
+        else if (data[2]===data[4] && data[4]===data[6] && data[6]!==""){
             won(data[6])
         }
     }
 
     const won = (winner) => {
         setLock(true)
-        if (winner="x"){
-            titileRef.current.innerHTML = `Congratulations: <img src=${cross_icon}>`
+        if (winner==="x"){
+            titleRef.current.innerHTML = `Congratulations: <img src=${cross_icon}> win`
         }
         else {
-            titileRef.current.innerHTML = `Congratulations: <img src=${circle_icon}>`
+            titleRef.current.innerHTML = `Congratulations: <img src=${circle_icon}> win`
         }
     }
 
     return (
         <div className="container">
-            <h1 className="titile" ref={titileRef}>Tic Tac Toe Game</h1>
+            <h1 className="title" ref={titleRef}>Tic Tac Toe Game</h1>
             <div className="board">
                 <div className="row1">
                     <div className="boxes" ref={box1} onClick={(e)=>{toggle(e,0)}}></div>
